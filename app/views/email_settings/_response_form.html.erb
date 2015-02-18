@@ -1,0 +1,33 @@
+<%= form_for @email, url:email_settings_path, :remote=>true do |f| %>
+<div class="ui form segment">	
+	<div class="ui toggle checkbox">
+		<%=f.check_box :is_vacation,  onclick:'$("#email-form").toggle();'%>
+		<%=f.label :is_vacation, "Auto reply"%>
+	</div>
+<div class="ui divider"></div>
+<div id="email-form">
+	<%=f.label :message%>
+	<%=f.text_area :message %>
+</div>
+<div class="field">
+	<%=label_tag :password %>
+	<div class="ui left labeled icon input">
+		<%=password_field_tag :password %>
+		<i class="key icon"></i>
+		<div class="ui corner label">
+			<i class="icon asterisk"></i>
+		</div>
+	</div>
+</div>
+<%=submit_tag "modify", class: "top attached ui blue submit button" %>
+</div>
+<% end %>
+
+<div id="result"></div>
+
+<script type="text/javascript">
+$(function(){
+	showOrHide=<%=@email.is_vacation%>
+	$("#email-form").toggle(showOrHide)
+});
+</script>

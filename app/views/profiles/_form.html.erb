@@ -1,0 +1,19 @@
+<%=fields_for(Profile.new) do |ff| %>
+	<div class="field">
+		<%= ff.label :first_name%>
+		<div class="ui left labeled icon input">
+			<%= ff.text_field :first_name %>
+			<i class="tag icon"></i>
+			<div class="ui corner label"><i class="icon asterisk"></i></div>
+		</div>
+	</div>
+
+	<div class="field">
+		<%= ff.label :last_name%>
+		<div class="ui left labeled icon input">
+			<%= ff.text_field :last_name %>
+			<i class="tag icon"></i>
+			<div class="ui corner label"><i class="icon asterisk"></i></div>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,4 @@
+<%= form_tag({action: :batch_create}, multipart: true) do %>
+	<%= file_field_tag "user" %>
+	<%= submit_tag "upload", class:"ui blue positive circular submit button"%>
+<% end %>

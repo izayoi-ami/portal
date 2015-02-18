@@ -1,0 +1,27 @@
+<div class="ui fluid accordion">
+	<div class="title">
+	<i class="dropdown icon"></i>
+	Create a single user
+	</div>
+	<div class="content">
+	<%=render "new_user_form" %>
+	</div>
+
+
+	<div class="title">
+	<i class="dropdown icon"></i>
+	Batch creation user
+	</div>
+	<div class="content">
+	<%=render "batch_user_form" %>
+	</div>
+</div>
+
+<div id="result">
+</div>
+
+<script type="text/javascript">
+$(function(){
+		$(".ui.accordion").accordion();
+});
+</script>

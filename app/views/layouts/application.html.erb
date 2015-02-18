@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portal</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="ui large menu">
+	<% if user_signed_in? %>
+	<div class="ui large buttons">
+	<a class="ui orange button" href="/">
+		<i class="home icon"></i> Home
+	</a>
+	<a class="ui red button" href="https://mail.spc.edu.hk/">
+		<i class="mail icon"></i> Email 
+	</a>
+	<a class="ui button" href="/users/settings">
+		<i class="setting icon"></i> Settings
+	</a>
+</div>
+	<div class="item">Hi, <%=current_user.fullname%><i> <%= @fullname %> </i></div>	
+<% end %>
+	<div class="right menu">
+<img class="ui circular floated image" src="/assets/text.png" />
+<% if user_signed_in? %>
+	<div class="ui large buttons">
+		<a class="ui green button" href="/faqs/">
+			Tutorial<i class="help icon"></i>
+		</a>
+		<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class=>"ui teal button") %>
+	</div>
+<% end %>
+	</div>
+</nav>
+<% if user_signed_in? and current_user.profile.require_change_password%> 
+	<div class="ui info message">
+		<div class="header">
+			Please change your password as soon as possible.
+		</div>
+	</div> 
+<% end %>
+<% if alert %> 
+	<div class="ui error large message"><%= alert %></div>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

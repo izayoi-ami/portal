@@ -1,0 +1,17 @@
+<div class="two column stackable ui grid">
+	<div class="column">
+		<div class="ui segment">
+			<h3 class="ui header">
+				<i class="settings icon"></i>
+				<div class="content">
+					Staff Account Settings
+					<div class="sub header">Manage your account settings and password.</div>
+				</div>
+			</h2>
+			<div class="ui blue buttons">
+				<%= link_to "Change password", users_change_password_path , class:"top attached ui button"%>
+			</div>
+		</div>
+	</div>
+	<%=render "email_settings/status" %>
+</div>

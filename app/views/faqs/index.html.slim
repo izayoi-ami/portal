@@ -1,0 +1,9 @@
+|  Hi, there are 
+= pluralize(Faq.count, "tutorial")
+| . 
+.ui.divided.link.list
+  - Faq.all.each do |faq|
+    .ui.segment
+      .item
+        .header
+          =link_to faq.title, faq, class:"item"

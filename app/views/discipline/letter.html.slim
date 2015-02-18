@@ -1,0 +1,6 @@
+h1 Late Letter
+= form_tag(discipline_letter_path, method:"post", class:"ui form", multipart:true)
+  h3.ui.header Upload Excel file
+  =file_field_tag :late, class:"ui submit button"
+  =submit_tag "Submit", class:"ui submit button"
+    

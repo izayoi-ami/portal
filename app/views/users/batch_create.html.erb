@@ -1,0 +1,23 @@
+<div class="ui success message">
+	<h2 class="ui header"><%=pluralize(@success_users.count,"users")%> created.</h2>
+	<div class="ui ordered list">
+		<% @success_users.each do |user| %>
+			<div class="item"> <%=user.fullname%> </div>
+		<% end %>
+	</div>
+</div>
+
+<div class="ui error message">
+	<h2 class="ui header"><%=pluralize(@failed_users.count,"users")%> failed.</h2>
+	<div class="ui ordered list">
+		<% @failed_users.each do |user| %>
+			<div class="item"> <%=user.username%> 
+				<ul class="ui list">
+					<% user.errors.full_messages.each do |msg| %>
+						<li> <%=msg%> </li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+	</div>
+</div>
