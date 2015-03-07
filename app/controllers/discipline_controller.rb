@@ -19,7 +19,7 @@ class DisciplineController < ApplicationController
                 next if index==0
                 p s
                 t=criteria.select{ |a,b| a.between?(s[:lastlate].to_i+1,s[:tlate].to_i)}.map{|a,b| b}.join(" ")
-                f<<[s[:cls],s[:no],s[:ename],t] if t!=""
+                f<<[s[:cls],s[:no],s[:ename],s[:tlate],s[:tlate]-s[:lastlate],s[:lastlate],t] if t!=""
             }
         end
         send_file(csv_output)

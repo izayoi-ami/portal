@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140815061931) do
 
-  create_table "email_settings", force: true do |t|
+  create_table "email_settings", force: :cascade do |t|
     t.boolean  "is_forward",  default: false
     t.boolean  "is_vacation", default: false
     t.text     "message"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140815061931) do
 
   add_index "email_settings", ["user_id"], name: "index_email_settings_on_user_id"
 
-  create_table "faqs", force: true do |t|
+  create_table "faqs", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140815061931) do
     t.datetime "video_updated_at"
   end
 
-  create_table "profiles", force: true do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string   "last_name"
     t.string   "first_name"
     t.boolean  "require_change_password", default: true
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140815061931) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
     t.string   "resource_type"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140815061931) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20140815061931) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
-  create_table "users_roles", id: false, force: true do |t|
+  create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
