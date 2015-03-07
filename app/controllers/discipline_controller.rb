@@ -15,11 +15,12 @@ class DisciplineController < ApplicationController
         csv=Roo::Spreadsheet.open(csvPath)
         csv_output="#{Rails.root}/tmp/letter.csv"
         CSV.open(csv_output,"wb") do |f|
+            f<<["class","no","ename","totlate","newlate","oldlate","Action"]
             csv.each_with_index(:cls=>"class",:ename=>"ename",:no=>"no",:tlate=>"totlate",:lastlate=>"late to"){ |s,index|
                 next if index==0
                 p s
                 t=criteria.select{ |a,b| a.between?(s[:lastlate].to_i+1,s[:tlate].to_i)}.map{|a,b| b}.join(" ")
-                f<<[s[:cls],s[:no],s[:ename],s[:tlate],s[:tlate]-s[:lastlate],s[:lastlate],t] if t!=""
+                f<<[s[:cls],s[:no],s[:ename],s[:tlate],s[:tlate].to_i - s[:lastlate].to_i,s[:lastlate],t] if t!=""
             }
         end
         send_file(csv_output)
